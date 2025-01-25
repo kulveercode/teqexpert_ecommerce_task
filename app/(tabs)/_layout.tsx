@@ -7,6 +7,7 @@ import { IconSymbol } from '@/components/ui/IconSymbol';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { FontAwesome5, Ionicons } from '@expo/vector-icons';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -34,12 +35,18 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
+          name="cart"
+          options={{
+            title: "Cart",
+            tabBarIcon: ({ color, focused }) => (
+              <Ionicons
+                name={focused ? "cart-sharp" : "cart-outline"}
+                color={color}
+                size={24}
+              />
+            ),
+          }}
+        />
     </Tabs>
   );
 }
